@@ -2,11 +2,13 @@ import { StatusBar } from "expo-status-bar";
 import { Button, StyleSheet, Text, TextInput, View } from "react-native";
 
 export default function App() {
+  const { appContainerStyle, inputContainerStyle, textInputStyle } = styled();
+
   return (
-    <View styles={styles.appContainer}>
-      <View>
-        <TextInput placeholder="Your Course Goal" />
-        <Button title="add your text goal" />
+    <View style={appContainerStyle}>
+      <View style={inputContainerStyle}>
+        <TextInput style={textInputStyle} placeholder="Your Course Goal" />
+        <Button title="add goal" />
       </View>
       <View>
         <Text>List of Goals...</Text>
@@ -15,8 +17,20 @@ export default function App() {
   );
 }
 
-const styles = StyleSheet.create({
-  appContainer: {
-    padding: 50,
-  },
-});
+const styled = () =>
+  StyleSheet.create({
+    appContainerStyle: {
+      padding: 50,
+    },
+    inputContainerStyle: {
+      flexDirection: "row",
+      justifyContent: "space-between",
+    },
+    textInputStyle: {
+      width: "80%",
+      padding: 8,
+      marginRight: 8,
+      borderWidth: 1,
+      borderColor: "#cccccc",
+    },
+  });
