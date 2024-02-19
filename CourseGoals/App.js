@@ -8,12 +8,24 @@ export default function App() {
     textInputStyle,
     goalsContainerStyle,
   } = styled();
+  const [enteredGoalText, setEnteredGoalText] = useState("");
+  function goalInputHandler(enteredText) {
+    setEnteredGoalText((prevVal) => {
+      return [...prevVal, enteredText];
+    });
+    console.log(enteredGoalText);
+  }
 
+  function goalAddHandler() {}
   return (
     <View style={appContainerStyle}>
       <View style={inputContainerStyle}>
-        <TextInput style={textInputStyle} placeholder="Your Course Goal" />
-        <Button title="add goal" />
+        <TextInput
+          style={textInputStyle}
+          placeholder="Your Course Goal"
+          onChangeText={goalInputHandler}
+        />
+        <Button onPress={goalAddHandler} title="add goal" />
       </View>
       <View style={goalsContainerStyle}>
         <Text>List of Goals...</Text>
